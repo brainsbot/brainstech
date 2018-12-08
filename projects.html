@@ -1,0 +1,87 @@
+<html>
+
+<head>
+
+  <meta charset="utf-8">
+  <title>Projects | Brains Code</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="/img/favicon.ico">
+  <link rel="apple-touch-icon image_src" href="/img/favicon.ico">
+  <link rel="canonical"  href="https://brainstech.github.io">
+  <link rel="stylesheet" href="/css/bootstrap.css" crossorigin="anonymous" />
+  <link rel="stylesheet" href="/css/font-awesome.css" />
+  <link rel="stylesheet" href="/css/app.css" />
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-8316630111743572",
+    enable_page_level_ads: true
+  });
+</script>
+
+</head>
+
+<body>
+
+<div id="sidenavbar" style="height: 100%;" class="col-md-3">
+ <h3 style="margin-left:20px;">All Projects</h3><br>
+  <button class="btn bttn" value="01">Graphic Designs</button><br>
+  <button class="btn bttn" value="02">Web Designs</button><br>
+  <button class="btn bttn" value="03">Open Source Softwares</button><br>
+  <button class="btn bttn" value="04">Custom Solutions</button><br>
+  <button class="btn bttn" value="05">3D Modeling</button><br>
+</div>
+
+<div class="container"> 
+<div class="row">
+
+<div id="container"></div><br><br><br>
+</div>
+</div>
+<div id="footer"></div>
+	
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="/js/analytics.js"></script>
+  <script src="/js/app.js"></script>
+
+<script type="text/javascript">
+
+var getUrl 	= window.location.href;
+var url 	= new URL(getUrl);
+var active 	= url.searchParams.get("active");
+var header 	= document.getElementById("sidenavbar");
+var btns 	= header.getElementsByClassName("bttn");
+
+if (active == null) {
+    active = "01"; 
+}
+
+$(function(){
+
+	$("#container").load("projects/"+active+".html");
+  	$("#footer").load("/footer.html"); 
+});
+
+
+for (var i = 0; i < btns.length; i++) {
+
+if (btns[i].value == active) {
+    btns[i].className += " active";
+}
+
+  btns[i].addEventListener("click", function() {
+    var current = document.getElementsByClassName("active");
+    current[0].className = current[0].className.replace(" active", "");
+    this.className += " active";
+    var val = document.getElementsByClassName("active")[0].value;
+    $("#container").load("projects/"+val+".html");
+	//window.location.href = "https://brainstech.github.io/projects?active="+val;
+  });
+}
+
+</script>
+
+</body>
+
+</html>
